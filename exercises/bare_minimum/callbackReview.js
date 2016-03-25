@@ -38,13 +38,15 @@ var request = require('request');
 // HINT: You can get an array of lines by splitting on the '\n' character
 var pluckFirstLineFromFile = function (filePath, cb) {
   fs.readFile(filePath, 'utf8', function (err, content) {
-    if (err) { 
-      cb(err);
-      console.log('fs.readFile failed :(\n', err);
-    } else {
-      cb(content);
-      console.log('fs.readFile successfully completed :)\n', content);
-    }
+    var lineOne = content ? content.split('\n')[0] : undefined;
+    cb(err, lineOne);
+    // if (err) { 
+    //   cb(err);
+    //   console.log('fs.readFile failed :(\n', err);
+    // } else {
+    //   cb(lineOne);
+    //   console.log('fs.readFile successfully completed :)\n', content);
+    // }
   });
 };
 
@@ -53,7 +55,7 @@ var pluckFirstLineFromFile = function (filePath, cb) {
 // HINT: there is a `statusCode` property on the `response` object
 var getStatusCode = function (url) {
   // YOUR CODE HERE
-  
+
 };
 
 // Export these functions so we can unit test them
